@@ -1,24 +1,26 @@
+/* REVIEW: The font-face names 'myFont' and 'myFont2' are not descriptive. Consider naming them
+   after the actual font, e.g. 'Maragsa' and 'GlacialIndifference'. */
 
 @font-face {
-  font-family: 'myFont2';
+  font-family: "myFont2";
   src: url("/fonts/glacial-indifference.regular.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'myFont';
+  font-family: "myFont";
   src: url("/fonts/Maragsa-Display.woff2") format("woff2");
 }
 
 body {
-  font-family: 'myFont';
-  background-image: url('/src/assets/backgrund.jpg');
+  font-family: "myFont";
+  /* REVIEW: This path will NOT work in a production build. Create React App does not serve files
+     from /src/ in production. Either move backgrund.jpg to the /public folder and reference it as
+     url('/backgrund.jpg'), or import it in a JS file: import bg from './assets/backgrund.jpg' and
+     apply it via inline style or a CSS module. */
+  /* REVIEW: Also, "backgrund.jpg" appears to be a typo — should be "background.jpg". */
+  background-image: url("/src/assets/backgrund.jpg");
   margin: 0;
 }
-
-
-
-
-
 
 h1 {
   font-size: 4.5rem;
@@ -28,26 +30,30 @@ h1 {
 }
 
 .albumCard {
-    border: 2px solid #ff66c4;
-    border-radius: 1rem;
-    padding: 1rem;
-    width: 250px;
-    background-color: #ffffff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      font-family: "myFont2";
+  border: 2px solid #ff66c4;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 250px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "myFont2";
 }
 
 .albumCard h2 {
-  font-size: 1.75rem ;
+  font-size: 1.75rem;
   color: hotpink;
 }
 
 .albumCard p {
-  font-size: 20px ;
+  font-size: 20px;
 }
 
-.albumCard button { /* edit & delete buttons */
+/* REVIEW: Consider adding a hover style for .albumCard when it's used in search results,
+   since those cards are clickable. A cursor: pointer and hover effect would improve UX. */
+
+.albumCard button {
+  /* edit & delete buttons */
   background-color: #ff66c4;
   font-family: "myFont";
   font-size: 1.2rem;
@@ -58,22 +64,24 @@ h1 {
   cursor: pointer;
 }
 
-.albumCard-buttons { /* container for edit & delete buttons */
+.albumCard-buttons {
+  /* container for edit & delete buttons */
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-top: 0.5rem;
-
 }
 
-
-.add-album  { /* add album button */
+.add-album {
+  /* add album button */
   border-radius: 3rem;
-  background-color: #ff66c4; 
+  background-color: #ff66c4;
   font-family: "myFont";
   font-size: 1rem;
-  color: white; 
-  border: none; 
+  color: white;
+  border: none;
+  /* REVIEW: `padding` is declared twice here (2px then 0.5rem). The second one overrides the first.
+     Remove the duplicate — keep only `padding: 0.5rem`. */
   padding: 2px;
   width: 40%;
   align-self: center;
@@ -81,6 +89,8 @@ h1 {
   cursor: pointer;
 }
 
+/* REVIEW: The .footer class is defined here but never used in any component. Either remove it
+   (dead CSS) or create a Footer component that uses it. */
 .footer {
   border-top: 5px solid hotpink;
   margin-top: 5rem;
@@ -89,6 +99,9 @@ h1 {
   display: flex;
   font-family: "myFont2";
 
+  /* REVIEW: Using `width: 100vw` with `margin-left: -5rem` is a fragile way to make a full-width
+     footer. It assumes the parent always has 5rem padding, so it'll break if the padding changes.
+     Consider restructuring the HTML so the footer sits outside the padded container. */
   width: 100vw;
   margin-left: -5rem;
   background-color: #ff66c4;
@@ -100,8 +113,11 @@ h1 {
   align-items: center;
 }
 
+/* REVIEW: `gap: 10px` is declared twice and `width: 25%` is declared twice below. Remove the duplicates. */
+/* REVIEW: `width: 25%` makes the form very narrow on large screens and will be too small on mobile.
+   Consider using max-width and min-width, or a responsive unit. */
 .input-form {
- display: flex;
+  display: flex;
   background-color: #f4cfe6;
   border-radius: 3rem;
   padding: 2rem;
@@ -111,10 +127,13 @@ h1 {
   flex-direction: column;
   gap: 10px;
   width: 25%;
-  
 }
 
-.input-form input, textarea {
+/* REVIEW: This selector is `.input-form input, textarea` which means it targets ALL <textarea> elements
+   on the page, not just textareas inside .input-form. The correct selector should be:
+   `.input-form input, .input-form textarea` */
+.input-form input,
+textarea {
   border-radius: 10px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -134,17 +153,16 @@ h1 {
   border: solid 1px #ccc;
 }
 .search-container button {
-    background-color: #ff66c4;
-    border-radius: 3rem;
-    font-family: "myFont";
-    border: none;
-    color: #fff;
+  background-color: #ff66c4;
+  border-radius: 3rem;
+  font-family: "myFont";
+  border: none;
+  color: #fff;
 
   font-size: 1rem;
   align-self: center;
   padding: 0.5rem;
   cursor: pointer;
-
 }
 
 .album-grid {
@@ -154,6 +172,3 @@ h1 {
   gap: 1rem;
   margin-top: 2rem;
 }
-
-
-
