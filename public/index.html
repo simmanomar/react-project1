@@ -1,19 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <!-- REVIEW: The description still says "Web site created using create-react-app".
+         Update it to describe your actual app, e.g. "A personal album collection tracker". -->
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
- 
-  <title>My favorite albums</title>
+    <!-- REVIEW: The <link rel="manifest"> tag was removed from the CRA default. The manifest.json file
+         still exists in /public and references logo192.png and logo512.png which don't exist.
+         Either add the manifest link back and provide the icon files, or delete manifest.json. -->
+
+    <title>My favorite albums</title>
   </head>
   <body>
+    <!-- REVIEW: There is no <noscript> fallback message for users with JavaScript disabled.
+         CRA includes one by default: <noscript>You need to enable JavaScript to run this app.</noscript> -->
     <div id="root"></div>
-  
   </body>
 </html>
