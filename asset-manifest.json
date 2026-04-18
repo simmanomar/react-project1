@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/react-project1/static/css/main.89e2f514.css",
-    "main.js": "/react-project1/static/js/main.6319fb48.js",
+    "main.css": "/react-project1/static/css/main.7a654776.css",
+    "main.js": "/react-project1/static/js/main.de45c6ca.js",
     "static/js/453.85480c3b.chunk.js": "/react-project1/static/js/453.85480c3b.chunk.js",
-    "static/media/backgrund.jpg": "/react-project1/static/media/backgrund.086d6bf2718ae686fc60.jpg",
+    "static/media/background.jpg": "/react-project1/static/media/background.086d6bf2718ae686fc60.jpg",
     "static/media/glacial-indifference.regular.otf": "/react-project1/static/media/glacial-indifference.regular.884dc679b35db5f785f2.otf",
     "static/media/Maragsa-Display.woff2": "/react-project1/static/media/Maragsa-Display.eb8fc3d77bda3b1108dd.woff2",
     "index.html": "/react-project1/index.html",
-    "main.89e2f514.css.map": "/react-project1/static/css/main.89e2f514.css.map",
-    "main.6319fb48.js.map": "/react-project1/static/js/main.6319fb48.js.map",
+    "main.7a654776.css.map": "/react-project1/static/css/main.7a654776.css.map",
+    "main.de45c6ca.js.map": "/react-project1/static/js/main.de45c6ca.js.map",
     "453.85480c3b.chunk.js.map": "/react-project1/static/js/453.85480c3b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.89e2f514.css",
-    "static/js/main.6319fb48.js"
+    "static/css/main.7a654776.css",
+    "static/js/main.de45c6ca.js"
   ]
 }
