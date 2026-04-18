@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 function AlbumForm ({ addAlbum, updateAlbum, editingIndex, albumToEdit, selectedAlbum, setSelectedAlbum}) {
     const [artist, setArtist] = useState("");
     const [albumName, setAlbumName] = useState("");
-    const [rating, setRating] = useState("");
+    const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
 
     // when editing 
@@ -11,7 +11,7 @@ function AlbumForm ({ addAlbum, updateAlbum, editingIndex, albumToEdit, selected
         if (albumToEdit) {
             setArtist(albumToEdit.artist);
             setAlbumName(albumToEdit.albumName);
-            setRating(albumToEdit.rating);
+            setRating(Number(albumToEdit.rating));
             setComment(albumToEdit.comment);
         }
     }, [albumToEdit]);
@@ -53,17 +53,17 @@ function AlbumForm ({ addAlbum, updateAlbum, editingIndex, albumToEdit, selected
         <form className="input-form"
         onSubmit={handleSubmit} >
             
-            <label>Artist</label>
-            <input required value={artist} onChange={(e) => setArtist(e.target.value)} />
+            <label htmlFor="artist">Artist</label>
+            <input id="artist" required value={artist} onChange={(e) => setArtist(e.target.value)} />
 
-            <label>Album Name</label>
-            <input required value={albumName} onChange={(e) => setAlbumName(e.target.value)} />
+            <label htmlFor="album name">Album Name</label>
+            <input id="album name" required value={albumName} onChange={(e) => setAlbumName(e.target.value)} />
 
-            <label>Rating 1-5</label>
-            <input type="number" min="1" max="5" required value={rating} onChange={(e) => setRating(e.target.value)} />
+            <label htmlFor="rating">Rating 1-5</label>
+            <input id="rating" type="number" min="1" max="5" step="1" required value={rating || ""} onChange={(e) => setRating(Number(e.target.value))} /> 
 
-            <label>Comment</label>
-            <textarea required value={comment} onChange={(e) => setComment(e.target.value)} />
+            <label htmlFor="comment">Comment</label>
+            <textarea id="comment" required value={comment} onChange={(e) => setComment(e.target.value)} />
 
             <button className="add-album"> 
               {editingIndex !== null ? "Update Album" : "Add Album"}

@@ -1,4 +1,5 @@
 import { useState } from "react"; // useState makes components remember data (album, search input +++)
+import { useEffect } from "react";
 import AlbumForm from "./components/AlbumForm";
 import Header from "./components/Header";
 import AlbumCard from "./components/AlbumCard";
@@ -10,42 +11,58 @@ function App () {
     const [searchResults, setSearchResults] = useState([]); //stores albums from the API (the search)
     const [selectedAlbum, setSelectedAlbum] = useState(null); //stores album you clicked from search
     const [artistQuery, setArtistQuery] = useState(""); //stores the user input in search box
+    const [message, setMessage] = useState("");
+
+
+    useEffect(() => {
+  if (message) {
+    const timer = setTimeout(() => setMessage(""), 3000);
+    return () => clearTimeout(timer);
+  }
+}, [message]);
 
     //adding an album, adds a new one to the list
     const addAlbum = (newAlbum) => {
-        setAlbums([...albums, newAlbum]); // takes everything inside albums and copies it, adding the new one at the end
+        const albumWithId = {
+            ...newAlbum,
+            id: Date.now()
+        };
+        setAlbums([...albums, albumWithId]); // takes everything inside albums and copies it, adding the new one at the end + unique id
+        setMessage("Album added successfully!");
     };
 
     // deleting an album from the list
     const deleteAlbum = (indexToDelete) => {
         const updatedAlbums = albums.filter((_, index) => index !== indexToDelete);
         setAlbums(updatedAlbums); //updates the state -> and the ui automatically
+        setMessage("Album deleted.");
     };
 
     // edits - here we get the updated album
-    const updateAlbum = (updatedAlbum) => {
-        const updatedAlbums = albums.map((album, index) => // loops through all albums
-            index === editingIndex ? updatedAlbum : album //if we edit, replace album. if not, leave it as is
-        );
+        const updateAlbum = (updatedAlbum) => {
+        const updatedAlbums = albums.map((album) =>
+        album.id === updatedAlbum.id ? updatedAlbum : album
+    );
+
         setAlbums(updatedAlbums); //saves changes
         setEditingIndex(null); //leaves edit mode
+        setMessage("Album updated successfully!");
     };
 
     // the actual fetch part of it all
     const fetchAlbums = (artist) => {
         if (!artist) return;
 
-        fetch(`https://itunes.apple.com/search?term=${artist}&entity=album&limit=25`) //searches the API for artist, gives a list of artists back
+        fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(artist)}&entity=album&limit=25`) //searches the API for artist, gives a list of artists back
             .then(res => res.json())
             .then(data => {
-                const albums = data.results.map(item => ({ //converts the api info to my format (album, artist etc)
+                const fetchedAlbums = data.results.map(item => ({ //converts the api info to my format (album, artist etc)
                     id: item.collectionId,
                     albumName: item.collectionName,
                     artist: item.artistName,
-                    cover: item.artworkUrl100
                 }));
 
-                setSearchResults(albums); //saves results & updates ui
+                setSearchResults(fetchedAlbums); //saves results & updates ui
             })
             .catch(err => console.error(err)); //error log if errors occur
     };
@@ -104,13 +121,16 @@ function App () {
           setSelectedAlbum={setSelectedAlbum} 
         /> 
 
+
+     {message && <p className="success-message">{message}</p>} 
+
       
         <h2>My Albums</h2> 
         <div className="album-grid">
         {albums.map((album, index) => ( // the saved albums, a loop 
 
             <AlbumCard //shows each album in a card underneath form with all info
-              key={index} 
+              key={album.id} 
               album={album} 
               index={index}
               deleteAlbum={deleteAlbum}

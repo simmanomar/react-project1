@@ -1,17 +1,17 @@
 
 @font-face {
-  font-family: 'myFont2';
+  font-family: 'GlacialIndifference';
   src: url("/fonts/glacial-indifference.regular.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'myFont';
+  font-family: 'Maragsa';
   src: url("/fonts/Maragsa-Display.woff2") format("woff2");
 }
 
 body {
-  font-family: 'myFont';
-  background-image: url('/src/assets/backgrund.jpg');
+  font-family: 'Maragsa';
+  background-image: url('/public/background.jpg');
   margin: 0;
 }
 
@@ -35,7 +35,13 @@ h1 {
     background-color: #ffffff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       text-align: center;
-      font-family: "myFont2";
+      font-family: "GlacialIndifference";
+      cursor: pointer;
+      transition: transform 0.2s ease;
+}
+
+.albumCard:hover {
+  transform: scale(1.03);
 }
 
 .albumCard h2 {
@@ -49,13 +55,15 @@ h1 {
 
 .albumCard button { /* edit & delete buttons */
   background-color: #ff66c4;
-  font-family: "myFont";
+  font-family: "Maragsa";
   font-size: 1.2rem;
   color: #ffffff;
   border: none;
   padding: 10px;
   border-radius: 0.3rem;
   cursor: pointer;
+
+
 }
 
 .albumCard-buttons { /* container for edit & delete buttons */
@@ -70,29 +78,16 @@ h1 {
 .add-album  { /* add album button */
   border-radius: 3rem;
   background-color: #ff66c4; 
-  font-family: "myFont";
+  font-family: "Maragsa";
   font-size: 1rem;
   color: white; 
   border: none; 
-  padding: 2px;
   width: 40%;
   align-self: center;
   padding: 0.5rem;
   cursor: pointer;
 }
 
-.footer {
-  border-top: 5px solid hotpink;
-  margin-top: 5rem;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  font-family: "myFont2";
-
-  width: 100vw;
-  margin-left: -5rem;
-  background-color: #ff66c4;
-}
 
 .form-container {
   display: flex;
@@ -109,12 +104,9 @@ h1 {
   gap: 10px;
   width: 25%;
   flex-direction: column;
-  gap: 10px;
-  width: 25%;
-  
 }
 
-.input-form input, textarea {
+.input-form input, .input-form textarea {
   border-radius: 10px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -136,7 +128,7 @@ h1 {
 .search-container button {
     background-color: #ff66c4;
     border-radius: 3rem;
-    font-family: "myFont";
+    font-family: "Maragsa";
     border: none;
     color: #fff;
 
@@ -157,3 +149,42 @@ h1 {
 
 
 
+.success-message {
+  display: flex;
+  justify-content: center;
+  color: blue;
+  font-size: 2.5rem;
+
+}
+
+/* media queries */
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .input-form {
+    width: 70%;
+    padding: 2rem;
+  }
+
+  .albumCard {
+    width: 90%;
+  }
+
+  .album-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .add-album {
+    width: 100%;
+  }
+}
