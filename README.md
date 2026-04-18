@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+**Project 2 - JavaScript & React**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://simmanomar.github.io/react-project1/
 
-## Available Scripts
+**You must build a React-based web application that allows users to manage a collection of items.**
 
-In the project directory, you can run:
+***Users must be able to:***
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Add new items (doesn’t have to persist on refresh)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+View items in a list
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Edit existing items
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Delete items
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+The type of data is flexible (e.g. books, recipes, movies, songs, travel destinations), but the application must demonstrate core React concepts and good application structure.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The goal is to create a dynamic, interactive, and user-friendly interface using React. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Requirements**
+Item Management
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+● Users must be able to add a new item
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+● Users must be able to view all items in a list or grid
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+● Users must be able to edit an existing item
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+● Users must be able to delete an item
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+● Changes must be reflected immediately in the UI (no page reloads)
 
-### Advanced Configuration
+**User Interface**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+● The application must have a clear and intuitive layout
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+● UI elements (buttons, inputs, lists) must be easy to understand and use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+● Feedback should be provided for user actions (e.g. item added, item deleted)
+
+**React Usage**
+
+
+● The application must be built using React
+
+
+● JSX must be used to render UI elements
+● Components must be used to structure the application
